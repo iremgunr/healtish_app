@@ -1,6 +1,6 @@
 # healtish_app
 
-A new Flutter project.
+HALA ÜZERİNDE ÇALIŞIYORUZ, TAMAMLANMADI!! - WE ARE STILL WORKING ON IT, NOT COMPLEATED YET!!!
 
 ## Getting Started
 
