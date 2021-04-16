@@ -146,7 +146,7 @@ class _StepCounterState extends State<StepCounter> {
                   fontWeight: FontWeight.w400,
                   fontSize: 18,
                   color: Colors.white,
-                  fontFamily: 'Yatra One',
+          
                 ),
               ),
             ),
