@@ -1,16 +1,16 @@
+import 'dart:math';
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:healtish_app/model/calorieinfo.dart';
 import 'package:healtish_app/model/meal.dart';
+import 'package:healtish_app/model/motivation.dart';
 import 'package:vector_math/vector_math_64.dart' as math;
 import 'package:intl/intl.dart';
-
+import 'stepCount_screen.dart';
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
-    final today=DateTime.now();
+    final today = DateTime.now();
 
     return Scaffold(
         backgroundColor: const Color(0xFFE9E9E9),
@@ -33,16 +33,6 @@ class ProfileScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-              /*BottomNavigationBarItem(
-                icon: Padding(
-                  child: Icon(Icons.search),
-                  padding: const EdgeInsets.only(top: 8.0),
-                ),
-                title: Text(
-                  "Search",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),*/
               BottomNavigationBarItem(
                 icon: Padding(
                   child: Icon(Icons.person),
@@ -90,10 +80,18 @@ class ProfileScreen extends StatelessWidget {
                           child: Image.asset("assets/user.jpeg"),
                         ),
                       ),
-                      _RadialProgress(
-                        width: height * 0.15,
-                        height: height * 0.14,
-                        progress: 0.7,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          _RadialProgress(
+                            width: height * 0.15,
+                            height: height * 0.14,
+                            progress: 0.7,
+                          ),
+                          _Motivation(
+                              motivation: motivations[
+                                  Random().nextInt(motivations.length - 1)])
+                        ],
                       ),
                     ],
                   ),
@@ -142,51 +140,59 @@ class ProfileScreen extends StatelessWidget {
                       height: 20,
                     ),
                     Expanded(
-                      child: Container(
-                        margin: const EdgeInsets.only(
-                            bottom: 65, left: 30, right: 25),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(28)),
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              const Color(0xFF20008B),
-                              const Color(0XFF200087),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => StepCounter()),
+                          );
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.only(
+                              bottom: 65, left: 30, right: 25),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(28)),
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                const Color(0xFF20008B),
+                                const Color(0XFF200087),
+                              ],
+                            ),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 16.0, left: 15.0),
+                                  child: Text('STEP CALCULATOR',
+                                      style: TextStyle(
+                                          color: Colors.white70,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w800))),
+                              SizedBox(height: 4),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(25)),
+                                      color: const Color(0xFF5B4D9D),
+                                    ),
+                                    padding: const EdgeInsets.all(2),
+                                    child: Image.asset(
+                                      "assets/ppl.png",
+                                      width: 316,
+                                      height: 60,
+                                    ),
+                                  ),
+                                ],
+                              )
                             ],
                           ),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 16.0, left: 15.0),
-                                child: Text('STEP CALCULATOR',
-                                    style: TextStyle(
-                                        color: Colors.white70,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w800))),
-                            SizedBox(height: 4),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(25)),
-                                    color: const Color(0xFF5B4D9D),
-                                  ),
-                                  padding: const EdgeInsets.all(2),
-                                  child: Image.asset(
-                                    "assets/ppl.png",
-                                    width: 316,
-                                    height: 60,
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
                         ),
                       ),
                     ),
@@ -199,6 +205,36 @@ class ProfileScreen extends StatelessWidget {
   }
 }
 
+class _Motivation extends StatelessWidget {
+  final Motivation motivation;
+
+  const _Motivation({Key key, @required this.motivation}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: <Widget>[
+        Container(
+          constraints:
+              BoxConstraints(maxWidth: MediaQuery.of(context).size.width * .55),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              motivation.motivation,
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                color: Color(0xFF200087),
+                //fontFamily: 'Yatra One',
+                fontSize: 12,
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+
 class _RadialProgress extends StatelessWidget {
   final double height, width, progress;
 
@@ -208,7 +244,7 @@ class _RadialProgress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _RadialPainter(progress: 0.70),
+      painter: _RadialPainter(progress: 0.7),
       child: Container(
         height: height,
         width: width,
@@ -217,18 +253,24 @@ class _RadialProgress extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                    text: '1700',
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        color: const Color(0XFF200087))),
+                  text: '1700',
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                    color: const Color(0XFF200087),
+
+                  ),
+                ),
                 TextSpan(text: "\n"),
                 TextSpan(
-                    text: "kcal",
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: const Color(0XFF200087)))
+                  text: "kcal",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: const Color(0XFF200087),
+
+                  ),
+                )
               ],
             ),
           ),
