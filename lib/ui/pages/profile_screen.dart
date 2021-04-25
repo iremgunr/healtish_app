@@ -3,9 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:healtish_app/model/meal.dart';
 import 'package:healtish_app/model/motivation.dart';
+import 'package:healtish_app/ui/pages/onboarding_screen.dart';
 import 'package:vector_math/vector_math_64.dart' as math;
 import 'package:intl/intl.dart';
-import 'stepCount_screen.dart';
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -144,7 +144,7 @@ class ProfileScreen extends StatelessWidget {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                                builder: (context) => StepCounter()),
+                                builder: (context) => OnboardingScreen()),
                           );
                         },
                         child: Container(
@@ -166,11 +166,11 @@ class ProfileScreen extends StatelessWidget {
                             children: <Widget>[
                               Padding(
                                   padding: const EdgeInsets.only(
-                                      top: 16.0, left: 15.0),
-                                  child: Text('STEP CALCULATOR',
+                                      top: 12.0,left: 8.0),
+                                  child: Text('Fitness Time! ',
                                       style: TextStyle(
                                           color: Colors.white70,
-                                          fontSize: 14,
+                                          fontSize: 20,
                                           fontWeight: FontWeight.w800))),
                               SizedBox(height: 4),
                               Row(
@@ -182,10 +182,10 @@ class ProfileScreen extends StatelessWidget {
                                           BorderRadius.all(Radius.circular(25)),
                                       color: const Color(0xFF5B4D9D),
                                     ),
-                                    padding: const EdgeInsets.all(2),
+                                    padding: const EdgeInsets.only(left: 51,right:55 ),
                                     child: Image.asset(
                                       "assets/ppl.png",
-                                      width: 316,
+                                      width: 250,
                                       height: 60,
                                     ),
                                   ),

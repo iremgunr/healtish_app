@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:healtish_app/ui/pages/home_screen.dart';
+import 'package:healtish_app/ui/pages/onboarding_screen.dart';
 import 'package:healtish_app/ui/pages/profile_screen.dart';
-import 'package:healtish_app/ui/pages/stepCount_screen.dart';
 
 void main() {
   runApp(MyApp());
