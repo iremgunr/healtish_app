@@ -6,7 +6,14 @@ import 'package:healtish_app/model/motivation.dart';
 import 'package:healtish_app/ui/pages/onboarding_screen.dart';
 import 'package:vector_math/vector_math_64.dart' as math;
 import 'package:intl/intl.dart';
-class ProfileScreen extends StatelessWidget {
+import 'calorie_calculator_screen.dart';
+
+class ProfileScreen extends StatefulWidget {
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
@@ -70,7 +77,7 @@ class ProfileScreen extends StatelessWidget {
                               fontWeight: FontWeight.w400, fontSize: 14),
                         ),
                         subtitle: Text(
-                          "Hello World",
+                          "Welcome!",
                           style: TextStyle(
                               fontWeight: FontWeight.w800,
                               fontSize: 18,
@@ -166,7 +173,7 @@ class ProfileScreen extends StatelessWidget {
                             children: <Widget>[
                               Padding(
                                   padding: const EdgeInsets.only(
-                                      top: 12.0,left: 8.0),
+                                      top: 12.0, left: 8.0),
                                   child: Text('Fitness Time! ',
                                       style: TextStyle(
                                           color: Colors.white70,
@@ -182,7 +189,8 @@ class ProfileScreen extends StatelessWidget {
                                           BorderRadius.all(Radius.circular(25)),
                                       color: const Color(0xFF5B4D9D),
                                     ),
-                                    padding: const EdgeInsets.only(left: 51,right:55 ),
+                                    padding: const EdgeInsets.only(
+                                        left: 51, right: 55),
                                     child: Image.asset(
                                       "assets/ppl.png",
                                       width: 250,
@@ -258,7 +266,6 @@ class _RadialProgress extends StatelessWidget {
                     fontSize: 17,
                     fontWeight: FontWeight.w600,
                     color: const Color(0XFF200087),
-
                   ),
                 ),
                 TextSpan(text: "\n"),
@@ -268,7 +275,6 @@ class _RadialProgress extends StatelessWidget {
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                     color: const Color(0XFF200087),
-
                   ),
                 )
               ],

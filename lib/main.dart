@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healtish_app/ui/pages/calorie_calculator_screen.dart';
 import 'package:healtish_app/ui/pages/home_screen.dart';
 import 'package:healtish_app/ui/pages/onboarding_screen.dart';
 import 'package:healtish_app/ui/pages/profile_screen.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: ProfileScreen(),
+      home: MyHomePage(),
 
     );
   }
