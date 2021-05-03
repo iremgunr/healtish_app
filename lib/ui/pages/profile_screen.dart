@@ -84,7 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               color: Colors.black),
                         ),
                         trailing: ClipOval(
-                          child: Image.asset("assets/user.jpeg"),
+                          child: Image.asset("assets/h.png"),
                         ),
                       ),
                       Row(

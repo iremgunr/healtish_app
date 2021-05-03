@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:healtish_app/ui/pages/profile_screen.dart';
 
-class MyHomePage extends StatefulWidget {
+class CalorieCalculatorScreen extends StatefulWidget {
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _CalorieCalculatorScreenState createState() => new _CalorieCalculatorScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _CalorieCalculatorScreenState extends State<CalorieCalculatorScreen> {
   int calorieBase;
   int calorieActivity;
   int radioSelected;
@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         });
                       },
                       decoration: InputDecoration(
-                          labelText: "Enter your weight in kilograms."),
+                          labelText: "    Enter your weight in kilograms."),
                     ),
                     padding(),
                     textStyle("What is your sporting activity?",
@@ -142,15 +142,8 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  /*Color setColor() {
-    if (gender) {
-      return Colors.blue;
-    } else {
-      return Colors.pink;
-    }
-  }*/
 
-  Text textStyle(String data, {color: Colors.black, fontSize: 15.0}) {
+  Text textStyle(String data, {color: Colors.black54, fontSize: 15.0}) {
     return Text(data,
         textAlign: TextAlign.center,
         style: TextStyle(color: color, fontSize: fontSize));
@@ -273,14 +266,17 @@ class _MyHomePageState extends State<MyHomePage> {
         barrierDismissible: false,
         builder: (BuildContext buildContext) {
           return AlertDialog(
-            title: textStyle("Error"),
+            title: textStyle("Error!",color: Colors.red),
             content: textStyle("All fields are not filled!"),
             actions: <Widget>[
-              FlatButton(
-                  onPressed: () {
-                    Navigator.pop(buildContext);
-                  },
-                  child: textStyle("OK", color: Colors.red))
+              Container(
+                color: Colors.white60,
+                child: FlatButton(
+                    onPressed: () {
+                      Navigator.pop(buildContext);
+                    },
+                    child: textStyle("OK", color: Colors.red)),
+              ),
             ],
           );
         });

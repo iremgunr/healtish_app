@@ -22,5 +22,5 @@ final motivations = [
   Motivation(motivation: 'Be stronger than your excuse'),
   Motivation(motivation: 'Your health is an investment, not an expense.'),
   Motivation(motivation: 'To eat is a necessity, but to eat intelligently is an art.'),
-  Motivation(motivation: 'Food is fueli not therapy.'),
+  Motivation(motivation: 'Food is fuel, not therapy.'),
 ];
