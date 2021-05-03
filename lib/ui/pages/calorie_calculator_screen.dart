@@ -249,7 +249,7 @@ class _CalorieCalculatorScreenState extends State<CalorieCalculatorScreen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ProfileScreen()),
+                    MaterialPageRoute(builder: (context) => ProfileScreen(calorie: double.parse('$calorieBase'),)),
                   );
                 },
                 child: textStyle("Go to Recipes", color: Colors.white70),

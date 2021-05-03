@@ -9,6 +9,9 @@ import 'package:intl/intl.dart';
 import 'calorie_calculator_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
+  final double calorie;
+
+  const ProfileScreen({Key key, this.calorie}) : super(key: key);
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
@@ -94,6 +97,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             width: height * 0.15,
                             height: height * 0.14,
                             progress: 0.7,
+                            calorie: widget.calorie,
                           ),
                           _Motivation(
                               motivation: motivations[
@@ -244,9 +248,9 @@ class _Motivation extends StatelessWidget {
 }
 
 class _RadialProgress extends StatelessWidget {
-  final double height, width, progress;
+  final double height, width, progress,calorie;
 
-  const _RadialProgress({Key key, this.height, this.width, this.progress})
+  const _RadialProgress({Key key, this.height, this.width, this.progress,this.calorie})
       : super(key: key);
 
   @override
@@ -261,7 +265,7 @@ class _RadialProgress extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: '1700',
+                  text: '$calorie',
                   style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.w600,
